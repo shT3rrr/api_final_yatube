@@ -19,3 +19,28 @@
 
 API будет доступно на `http://127.0.0.1:8000/api/v1/`.
 Документация ReDoc: `http://127.0.0.1:8000/redoc/`.
+
+## Примеры запросов
+
+**Получить токен:**
+```http
+POST /api/v1/jwt/create/
+Content-Type: application/json
+
+{"username": "user", "password": "password"}
+```
+Ответ: `{"access": "...", "refresh": "..."}`
+
+**Получить посты (требуется токен):**
+```http
+GET /api/v1/posts/
+Authorization: Bearer <access_token>
+```
+
+**Создать пост (требуется токен):**
+```http
+POST /api/v1/posts/
+Authorization: Bearer <access_token>
+Content-Type: application/json
+{"text": "Новый пост!"}
+```
