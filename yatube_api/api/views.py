@@ -1,8 +1,13 @@
-from rest_framework import viewsets, permissions, pagination, filters
+from rest_framework import viewsets, permissions, filters
 from django.shortcuts import get_object_or_404
 
-from posts.models import Post, Comment, Group, Follow
-from .serializers import PostSerializer, CommentSerializer, GroupSerializer, FollowSerializer
+from posts.models import Post, Group, Follow
+from .serializers import (
+    PostSerializer,
+    CommentSerializer,
+    GroupSerializer,
+    FollowSerializer
+)
 from .permissions import IsAuthorOrReadOnly
 
 

@@ -9,7 +9,11 @@ User = get_user_model()
 
 class PostSerializer(serializers.ModelSerializer):
     author = SlugRelatedField(slug_field='username', read_only=True)
-    group = serializers.PrimaryKeyRelatedField(queryset=Group.objects.all(), required=False, allow_null=True)
+    group = serializers.PrimaryKeyRelatedField(
+        queryset=Group.objects.all(),
+        required=False,
+        allow_null=True
+    )
 
     class Meta:
         fields = '__all__'
@@ -57,5 +61,6 @@ class FollowSerializer(serializers.ModelSerializer):
 
     def validate_following(self, value):
         if self.context['request'].user == value:
-            raise serializers.ValidationError("Вы не можете подписаться на самого себя.")
+            raise serializers.ValidationError("Вы не можете \
+                подписаться на самого себя.")
         return value
