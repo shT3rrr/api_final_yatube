@@ -20,7 +20,7 @@ class ConditionalLimitOffsetPagination(LimitOffsetPagination):
 
     def get_paginated_response(self, data):
         if self.request:
-            if self.limit_query_paramnot in self.request.query_params:
+            if self.limit_query_param not in self.request.query_params:
                 pass
 
         return Response({
